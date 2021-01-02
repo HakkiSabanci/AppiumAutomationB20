@@ -6,9 +6,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.net.URL;
 
 public class CalculatorTests {
@@ -36,11 +40,22 @@ public class CalculatorTests {
         AndroidElement btn2 = driver.findElement(MobileBy.id("com.android.calculator2:id/digit_2"));
         AndroidElement plusBtn = driver.findElement(MobileBy.AccessibilityId("plus"));
         AndroidElement equalsBtn = driver.findElement(MobileBy.AccessibilityId("equals"));
+        AndroidElement resultElement = driver.findElementById("com.android.calculator2:id/result");
 
+        //to handle synchronization issues, same as in Selenium WebDriver
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+
+        wait.until(ExpectedConditions.elementToBeClickable(btn2));
         btn2.click(); // 2
         plusBtn.click(); // +
         btn2.click(); // 2
         equalsBtn.click(); // =
 
+        int expected = 4;
+        int actual = Integer.parseInt(resultElement.getText());
+
+        Assert.assertEquals(expected, actual);
+
+        driver.closeApp();
     }
 }
