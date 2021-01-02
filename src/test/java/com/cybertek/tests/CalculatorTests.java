@@ -1,6 +1,7 @@
 package com.cybertek.tests;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
@@ -32,6 +33,14 @@ public class CalculatorTests {
         //4723 - default port number of appium server. Can be changed
         URL url = new URL("http://localhost:4723/wd/hub");
         AppiumDriver<AndroidElement> driver = new AndroidDriver<>(url, desiredCapabilities);
+        AndroidElement btn2 = driver.findElement(MobileBy.id("com.android.calculator2:id/digit_2"));
+        AndroidElement plusBtn = driver.findElement(MobileBy.AccessibilityId("plus"));
+        AndroidElement equalsBtn = driver.findElement(MobileBy.AccessibilityId("equals"));
+
+        btn2.click(); // 2
+        plusBtn.click(); // +
+        btn2.click(); // 2
+        equalsBtn.click(); // =
 
     }
 }
