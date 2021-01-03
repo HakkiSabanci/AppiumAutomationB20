@@ -19,6 +19,10 @@ public class LoginPage extends BasePage{
     @AndroidFindBy(id = "com.etsy.android:id/button_signin")
     private AndroidElement signInButton;
 
+    public void clickGetStarted(){
+
+    }
+
     public void login(){
         String email = ConfigurationReader.getProperty("email");
         String password = ConfigurationReader.getProperty("password");

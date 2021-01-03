@@ -1,6 +1,7 @@
 package com.cybertek.utils;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.WaitOptions;
@@ -8,10 +9,17 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class MobileUtils {
+    private static WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
+
+    public static void clickWithWait(MobileElement mobileElement){
+        wait.until(ExpectedConditions.elementToBeClickable(mobileElement)).click();
+    }
 
     public static void swipeScreen(Direction dir, AppiumDriver driver) {
         System.out.println("swipeScreen(): dir: '" + dir + "'"); // always log your actions
