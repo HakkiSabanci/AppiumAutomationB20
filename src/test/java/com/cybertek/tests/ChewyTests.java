@@ -1,6 +1,7 @@
 package com.cybertek.tests;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
@@ -8,8 +9,11 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 
@@ -34,7 +38,11 @@ public class ChewyTests {
     @Test
     public void test1() throws InterruptedException {
         Thread.sleep(3000);
-        AndroidElement doneBtn = driver.findElementById("com.chewy.android:id/doneButton");
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        By doneBy = MobileBy.id("com.chewy.android:id/doneButton");
+        wait.until(ExpectedConditions.presenceOfElementLocated(doneBy));
+        AndroidElement doneBtn = driver.findElement(doneBy);
+        wait.until(ExpectedConditions.elementToBeClickable(doneBtn));
         doneBtn.click();
         Thread.sleep(3000);
         AndroidElement dogsIcon = driver.findElementByXPath("//android.widget.FrameLayout[@content-desc=\"Dog Category\"]/android.widget.ImageView");
