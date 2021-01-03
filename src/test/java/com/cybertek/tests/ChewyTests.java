@@ -1,5 +1,6 @@
 package com.cybertek.tests;
 
+import com.cybertek.utils.MobileUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -44,6 +45,12 @@ public class ChewyTests {
         AndroidElement doneBtn = driver.findElement(doneBy);
         wait.until(ExpectedConditions.elementToBeClickable(doneBtn));
         doneBtn.click();
+        Thread.sleep(5000);
+        //scroll
+//        MobileUtils.swipeScreen(MobileUtils.Direction.UP, driver);//if possible, will scroll all the way down
+        MobileUtils.swipeScreenSmall(MobileUtils.Direction.UP, driver);//scrolls just a little bit
+        Thread.sleep(3000);
+        MobileUtils.swipeScreenSmall(MobileUtils.Direction.UP, driver);//scrolls just a little bit
         Thread.sleep(3000);
         //I create By object
         By dogIconBy = MobileBy.xpath("//android.widget.FrameLayout[@content-desc=\"Dog Category\"]/android.widget.ImageView");
@@ -55,7 +62,7 @@ public class ChewyTests {
         wait.until(ExpectedConditions.elementToBeClickable(dogsIcon));
         //click on element
         dogsIcon.click();
-        Thread.sleep(3000);
+        Thread.sleep(6000);
     }
 
     @After
