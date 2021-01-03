@@ -20,7 +20,7 @@ public class LoginPage extends BasePage{
     private AndroidElement signInButton;
 
     public void clickGetStarted(){
-
+        MobileUtils.clickWithWait(getStartedBtn);
     }
 
     public void login(){
