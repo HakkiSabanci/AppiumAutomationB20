@@ -2,7 +2,6 @@ package com.cybertek.utils;
 
 
 import org.apache.log4j.Logger;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +9,6 @@ import java.util.Properties;
 
 public class ConfigurationReader {
     private final static Logger logger = Logger.getLogger(ConfigurationReader.class);
-
     private static Properties properties;
 
     static {
@@ -28,3 +26,4 @@ public class ConfigurationReader {
         return properties.getProperty(property);
     }
 }
+
