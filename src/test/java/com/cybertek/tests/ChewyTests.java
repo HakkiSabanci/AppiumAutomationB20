@@ -48,12 +48,15 @@ public class ChewyTests {
         Thread.sleep(5000);
         //scroll
 //        MobileUtils.swipeScreen(MobileUtils.Direction.UP, driver);//if possible, will scroll all the way down
-        MobileUtils.swipeScreenSmall(MobileUtils.Direction.UP, driver);//scrolls just a little bit
-        Thread.sleep(3000);
-        MobileUtils.swipeScreenSmall(MobileUtils.Direction.UP, driver);//scrolls just a little bit
-        Thread.sleep(3000);
+//        MobileUtils.swipeScreenSmall(MobileUtils.Direction.UP, driver);//scrolls just a little bit
+//        Thread.sleep(3000);
+//        MobileUtils.swipeScreenSmall(MobileUtils.Direction.UP, driver);//scrolls just a little bit
+//        Thread.sleep(3000);
+
         //I create By object
         By dogIconBy = MobileBy.xpath("//android.widget.FrameLayout[@content-desc=\"Dog Category\"]/android.widget.ImageView");
+        MobileUtils.scrollToElement(MobileUtils.Direction.UP, driver, dogIconBy);
+
         //wait for presence of the element, doesn't work with WebElement, only with By
         wait.until(ExpectedConditions.presenceOfElementLocated(dogIconBy));
         //once element present, find it

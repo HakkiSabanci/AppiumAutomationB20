@@ -134,18 +134,11 @@ public class MobileUtils {
         int counter = 0;
         do {
             swipeScreenSmall(direction, driver);
-            waitFor(300);
         } while (!isElementPreset(by, driver) && counter++ < 20);
     }
 
     public static boolean isElementPreset(By by, AppiumDriver driver) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            System.out.println("Element not found");
-            return false;
-        }
+       return !(driver.findElements(by).isEmpty());
     }
 
     public static void waitFor(int milliseconds) {
