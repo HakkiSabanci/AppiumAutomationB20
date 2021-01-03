@@ -37,6 +37,7 @@ public class EtsyTests {
         //click on get started button
         driver.findElementById("com.etsy.android:id/btn_link").click();
         //enter email
+        MobileUtils.waitFor(2000);
         driver.findElementById("com.etsy.android:id/edit_username").sendKeys("areatha@uspeakw.com");
         //enter password
         driver.findElementById("com.etsy.android:id/edit_password").sendKeys("Cybertek2020");
@@ -47,6 +48,6 @@ public class EtsyTests {
 
     @After
     public void tearDown(){
-        driver.quit();
+        driver.closeApp();
     }
 }
