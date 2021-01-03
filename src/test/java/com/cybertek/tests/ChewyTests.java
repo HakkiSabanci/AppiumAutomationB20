@@ -45,7 +45,15 @@ public class ChewyTests {
         wait.until(ExpectedConditions.elementToBeClickable(doneBtn));
         doneBtn.click();
         Thread.sleep(3000);
-        AndroidElement dogsIcon = driver.findElementByXPath("//android.widget.FrameLayout[@content-desc=\"Dog Category\"]/android.widget.ImageView");
+        //I create By object
+        By dogIconBy = MobileBy.xpath("//android.widget.FrameLayout[@content-desc=\"Dog Category\"]/android.widget.ImageView");
+        //wait for presence of the element, doesn't work with WebElement, only with By
+        wait.until(ExpectedConditions.presenceOfElementLocated(dogIconBy));
+        //once element present, find it
+        AndroidElement dogsIcon = driver.findElement(dogIconBy);
+        //wait for until webdriver can click on element
+        wait.until(ExpectedConditions.elementToBeClickable(dogsIcon));
+        //click on element
         dogsIcon.click();
         Thread.sleep(3000);
     }
