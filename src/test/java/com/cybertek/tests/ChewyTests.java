@@ -25,6 +25,7 @@ public class ChewyTests {
         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel_2");
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
         desiredCapabilities.setCapability(MobileCapabilityType.APP, "https://cybertek-appium.s3.amazonaws.com/chewy.apk");
+        //app will be automatically installed on your device before test execution
 
         URL url = new URL("http://localhost:4723/wd/hub");
         driver = new AndroidDriver<>(url, desiredCapabilities);
@@ -32,6 +33,12 @@ public class ChewyTests {
 
     @Test
     public void test1() throws InterruptedException {
+        Thread.sleep(3000);
+        AndroidElement doneBtn = driver.findElementById("com.chewy.android:id/doneButton");
+        doneBtn.click();
+        Thread.sleep(3000);
+        AndroidElement dogsIcon = driver.findElementByXPath("//android.widget.FrameLayout[@content-desc=\"Dog Category\"]/android.widget.ImageView");
+        dogsIcon.click();
         Thread.sleep(3000);
     }
 
