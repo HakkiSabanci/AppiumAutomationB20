@@ -1,9 +1,9 @@
 package com.cybertek.pages;
 
+import com.cybertek.utils.ConfigurationReader;
 import com.cybertek.utils.MobileUtils;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage{
 
@@ -18,6 +18,12 @@ public class LoginPage extends BasePage{
 
     @AndroidFindBy(id = "com.etsy.android:id/button_signin")
     private AndroidElement signInButton;
+
+    public void login(){
+        String email = ConfigurationReader.getProperty("email");
+        String password = ConfigurationReader.getProperty("password");
+        login(email, password);
+    }
 
     public void login(String email, String password){
         MobileUtils.waitFor(2000);
